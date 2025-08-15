@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <title>Route Optimizer</title>
+        <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
+        <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css'/>
+        <link rel="stylesheet" href=' {{ url_for('static', filename='css/styles.css') }} '/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div id="map"></div>
+
+        <div id="search-modal" class="search-modal">
+            <div class="search-modal-content">
+                <span id="close-modal">&times;</span>
+                <h3>Search for Location</h3>
+                <input type="text" id="modal-search-input" placeholder="Type a location..." />
+                <ul id="search-results"></ul>
+            </div>
+        </div>
+
+        <div class="map-controls">
+            <h3>FLOOD VISUAL LEGEND</h3>
+
+            <label>
+                <input type="checkbox" id="toggle-y5" checked>
+                <span class="legend-color" style="background:#4fc24f;"></span> 5-year return
+            </label>
+
+            <label>
+                <input type="checkbox" id="toggle-y25" checked>
+                <span class="legend-color" style="background:#9933ff;"></span> 25-year return
+            </label>
+
+            <label>
+                <input type="checkbox" id="toggle-y100" checked>
+                <span class="legend-color" style="background:#ff9900;"></span> 100-year return
+            </label>
+        </div>
+
+        <div class="route-inputs" id="route-inputs">
+            <h2 id="route-header">ROUTE PLANNER SYSTEM</h2>
+
+            <div class="input-row">
+                <div class="input-fields">
+                    <label>Source:</label>
+                    <input type="text" class="source-input" placeholder="Click search to enter source location" readonly/>
+                    <button class="search-nominatim" title="Search"><i class="fas fa-magnifying-glass"></i></button>
+                    <button class="pick-on-map" title="Pick on map"><i class="fas fa-map-pin"></i></button>
+                </div>
+                <div class="latlong-labels">
+                    <h5 id="lat-label">Lat: 0.000000</h5>
+                    <h5 id="long-label">Lon: 0.000000</h5>
+                </div>
+            </div>
+
+            <h3>DESTINATIONS</h3>
+
+            <div class="destinations-wrapper">
+                <div id="destinations-container">
+                    <div class="destination-row">
+                        <div class="input-fields">
+                            <input type="text" class="destination-input" placeholder="Click search to enter destination" readonly/>
+                            <button class="search-nominatim" title="Search"><i class="fas fa-magnifying-glass"></i></button>
+                            <button class="pick-on-map" title="Pick on map"><i class="fas fa-map-pin"></i></button>
+                            <button class="remove-dest" title="Remove"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                        <div class="latlong-labels">
+                            <h5 id="lat-label">Lat: 0.000000</h5>
+                            <h5 id="long-label">Lon: 0.000000</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-buttons">
+                <button id="add-destination"><i class="fas fa-plus"></i> Add Destination</button>
+                <button id="submit-route"><i class="fas fa-paper-plane"></i> Submit Locations</button>
+            </div>
+        </div>
+
+
+        <script src = ' {{ url_for('static', filename='js/map.js') }} '></script>
+        <script src="{{ url_for('static', filename='js/routeInputs.js') }}"></script>
+    </body>
+</html>

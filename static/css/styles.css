@@ -1,0 +1,328 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100svw;
+    height: 100svh;
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(10, 50, 90, 0.85);
+    color: #ffffff;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    z-index: 999;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+}
+
+.map-controls h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #b3e5fc;
+}
+
+.map-controls label {
+    display: block;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.map-controls input[type="checkbox"] {
+    margin-right: 6px;
+    accent-color: #4fc3f7;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.route-inputs {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 420px;
+    height: 850px;
+    max-height: 850px;
+    background: rgba(15, 60, 110, 0.9);
+    color: #e0f7fa;
+    padding: 28px 32px;
+    border-radius: 12px;
+    z-index: 999;
+    overflow-y: auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    transition: max-height 0.3s ease;
+    backdrop-filter: blur(6px);
+}
+
+.route-inputs.collapsed {
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.route-inputs h2 {
+    margin: 5px 0 32px 0;
+    font-size: 24px;
+    cursor: pointer;
+    color: #b3e5fc;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.route-inputs h3 {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #81d4fa;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 6px;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.latlong-labels {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.latlong-labels h5 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #e0f7fa;
+}
+
+.input-fields label {
+    font-size: 14px;
+}
+
+.input-fields input {
+    flex: 1;
+    width: 250px;
+    padding: 6px 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #81d4fa;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    outline: none;
+}
+
+.input-fields input::placeholder {
+    color: rgba(224, 247, 250, 0.7);
+}
+
+.input-fields button {
+    padding: 6px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #4fc3f7;
+    color: #fff;
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.input-fields button i {
+    pointer-events: none;
+}
+
+.input-fields button:hover {
+    background-color: #0288d1;
+    transform: scale(1.1);
+}
+
+.destinations-wrapper {
+    max-height: 550px;
+    overflow-y: auto;
+    width: 99%;
+    margin-bottom: 12px;
+}
+
+.destination-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.destination-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 6px;
+}
+
+.destination-row.selected {
+    background: rgba(173, 216, 230, 0.2);
+    border-radius: 6px;
+}
+
+#add-destination {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #0288d1;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#add-destination:hover {
+    background-color: #0277bd;
+    transform: scale(1.05);
+}
+
+#submit-route {
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    background-color: #00bcd4;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#submit-route:hover {
+    background-color: #0097a7;
+    transform: scale(1.03);
+}
+
+.search-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.search-modal-content {
+    background-color: rgba(15, 60, 110, 0.95);
+    margin: 10% auto;
+    padding: 20px 24px;
+    border-radius: 12px;
+    width: 400px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+}
+
+#modal-search-input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #81d4fa;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#modal-search-input::placeholder {
+    color: rgba(224, 247, 250, 0.7);
+}
+
+#close-modal {
+    position: absolute;
+    right: 12px; top: 12px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#search-results {
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(15, 60, 110, 0.9);
+    border-radius: 6px;
+    border: 1px solid #81d4fa;
+}
+
+#search-results li {
+    padding: 6px 10px;
+    cursor: pointer;
+    color: #e0f7fa;
+    font-size: 14px;
+}
+
+#search-results li:hover {
+    background-color: #0288d1;
+    transform: scale(1.02);
+}
+
+.route-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(10, 50, 90, 0.85);
+    color: #ffffff;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    z-index: 999;
+    width: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+}
+
+.route-info h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #b3e5fc;
+}

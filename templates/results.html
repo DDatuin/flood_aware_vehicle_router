@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <title>Route Results</title>
+    
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href=' {{ url_for('static', filename='css/styles.css') }} '/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+  <div id="map"></div>
+
+  <div class="route-info">
+      <h3>Route Info</h3>
+      <p id="distance">Distance: </p>
+      <p id="duration">Duration: </p>
+  </div>
+
+  <div class="map-controls">
+    <h3>FLOOD VISUAL LEGEND</h3>
+
+    <label>
+        <input type="checkbox" id="toggle-y5" checked>
+        <span class="legend-color" style="background:#4fc24f;"></span> 5-year return
+    </label>
+
+    <label>
+        <input type="checkbox" id="toggle-y25" checked>
+        <span class="legend-color" style="background:#9933ff;"></span> 25-year return
+    </label>
+
+    <label>
+        <input type="checkbox" id="toggle-y100" checked>
+        <span class="legend-color" style="background:#ff9900;"></span> 100-year return
+    </label>
+</div>
+<script>
+    window.routeGeoJSON = {{ route_data|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/resultsMap.js') }}"></script>
+  </body>
+</html>
