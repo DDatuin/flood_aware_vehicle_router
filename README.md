@@ -9,7 +9,7 @@ Follow the steps below to set up your local environment and run the application.
 
 ### 1. Download a copy of the codebase or clone the repository using Git or Github
 ### 2. Create your own Virtual Environment
-  - Open your terminal in VSCode and go to your clone copy of this codebase then type:
+  - Open your terminal in VSCode and go to your cloned copy of this codebase, then type:
   ``` 
   python -m venv .venv
   ```
@@ -17,6 +17,11 @@ Follow the steps below to set up your local environment and run the application.
   - Type the following command so that the virtual environment will be used for the server:
   ```
   .venv\Scripts\Activate
+  ```
+### 4. Set yung env ORS_API_KEY variable:
+  - After setting up the virtual environment, enter the following command:
+  ```
+  $env:ORS_API_KEY="<your ORS API Key found in your ORS profile>"
   ```
 ### 4. Install the necessary dependencies
   - In your terminal, type the following command to install the dependencies used in the project:
